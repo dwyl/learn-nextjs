@@ -8,7 +8,6 @@ https://nextjs.org/learn/basics/create-nextjs-app/setup
 npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter"
 ```
 
-That creates a bunch of files according to [Learn Next.js](https://nextjs.org/learn)
 
 
 
@@ -20,22 +19,13 @@ That creates a bunch of files according to [Learn Next.js](https://nextjs.org/le
 This isn't exactly _light_ on dependencies:
 
 ```
-Installing packages. This might take a couple of minutes.
-added 694 packages from 283 contributors
-```
+added 759 packages from 404 contributors and audited 759 packages in 20.486s
 
-Installed `gray-matter`:
-
-```
-npm install gray-matter --save-dev
-+ gray-matter@4.0.2
-added 8 packages from 18 contributors and audited 702 packages in 4.221s
-
-34 packages are looking for funding
+78 packages are looking for funding
   run `npm fund` for details
 
 found 5 vulnerabilities (3 low, 1 moderate, 1 high)
   run `npm audit fix` to fix them, or `npm audit` for details
 ```
 
-**1 high** ... unsurprising in **702** packages ... 
+**1 high** priority vulnerability ... unsurprising in **759** packages from **404** contributors.
