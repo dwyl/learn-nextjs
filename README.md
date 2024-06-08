@@ -23,6 +23,7 @@ static site generation, and much more.
     - [Navigation](#navigation)
     - [`Dynamic` and `Parallel` routes](#dynamic-and-parallel-routes)
     - [Intercepting routes](#intercepting-routes)
+  - [Fetching data](#fetching-data)
 - [Conclusion](#conclusion)
   - [`tl;dr`](#tldr)
 
@@ -494,7 +495,64 @@ page,js
 ```
 
 
+## Fetching data
 
+Your web app is only useful for the data it shows.
+Data fetching can be done in a few ways in `Next.js`, 
+depending if you're rendering your content on the `client` 
+or on the `server`.
+
+- if on the `server`:
+  - you can use the `fetch` function,
+which extends the [native `fetch` Web API function](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+  - use third-party libraries.
+- if on the `client`:
+  - you can use the [`Route Handler`](https://nextjs.org/docs/app/building-your-application/routing/route-handlers).
+  - you can use third-party libraries.
+
+Regardless of the way you do it on each scenario,
+you are able to **cache data**.
+
+```ts
+// 'force-cache' is the default, and can be omitted
+fetch('https://...', { cache: 'force-cache' })
+```
+
+When caching data, you *must have a data revalidation strategy*.
+This process of purging the data cache and re-fetching the latest data
+is a must to keep the person up-to-date with the latest information.
+In `Next.js`, cached data can be revalidated in two main ways:
+
+- **`time-based revalidation`**,
+to revalidate data at a time interval.
+
+```ts
+fetch('https://...', { next: { revalidate: 3600 } })
+```
+
+- **`on-demand revalidation`**,
+to revalidate data by `path` or by `cache tag`.
+You have the option to tag cache entries 
+and then revalidate all entries associated with given tag.
+
+```ts
+export default async function Page() {
+  const res = await fetch('https://...', { next: { tags: ['collection'] } })
+  const data = await res.json()
+  // ...
+}
+```
+
+Alternatively, in both scenarios, you may use third-party libraries
+to handle caching, revalidation and memoization differently
+than what `Next.js` already provides. 
+
+In addition to this, `Next.js` allows you to:
+
+- [**stream** data](https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#streaming).
+- fetch data [**sequentially or in parallel**](https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#parallel-and-sequential-data-fetching).
+- [**censor sensitive information**](https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#preventing-sensitive-data-from-being-exposed-to-the-client) to prevent object instances
+with sensitive values from being passed to the client.
 
 # Conclusion
 
