@@ -24,8 +24,12 @@ static site generation, and much more.
     - [`Dynamic` and `Parallel` routes](#dynamic-and-parallel-routes)
     - [Intercepting routes](#intercepting-routes)
   - [Fetching data](#fetching-data)
-- [Conclusion](#conclusion)
-  - [`tl;dr`](#tldr)
+  - [Rendering](#rendering)
+    - [Server components](#server-components)
+    - [Client components](#client-components)
+  - [Styling](#styling)
+  - [Optimizations](#optimizations)
+- [How?](#how)
 
 
 
@@ -554,33 +558,134 @@ In addition to this, `Next.js` allows you to:
 - [**censor sensitive information**](https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#preventing-sensitive-data-from-being-exposed-to-the-client) to prevent object instances
 with sensitive values from being passed to the client.
 
-# Conclusion
 
-My conclusion after spending a couple of hours learning `Next.js` is that it's _very_ easy.
+## Rendering
 
-There are a few confusing bits like _why_ is there:
-`lib/posts.js`, 
-`pages/posts/index.js`
-and then `posts/*.md` ...?
-How will can an _infrequent_ user of this framwework 
-be expected to know what each file does when they return to it after a few months?
+Rendering converts your code into user interfaces. 
+`React` and `Next.js` enable hybrid web applications, 
+rendering parts on the server or client. 
 
-Overall I think it's worth going through the tutorial and learning the basics.
-I'm going to be using this in a Demo/SPIKE so I wanted to go through the _whole_ tutorial including API.
+- **client** - browser on the user's device requests and renders the UI.
+- **server** - data center computer stores code, processes requests, and sends responses.
+
+In `Next.js`, we ought to make a distinction
+between **`Server Components`** and **`Client Components`**.
 
 
-## `tl;dr`
+### Server components
 
-This isn't exactly _light_ on dependencies:
+`React Server Components` allow you to write UI 
+that can be rendered on the server.
 
+The benefits to using server rendering are many,
+and it's beyond the scope of this document to explain them.
+Please refer to 
+https://nextjs.org/docs/app/building-your-application/rendering/server-components#benefits-of-server-rendering
+to find more about it.
+
+By default, `Next.js` (and by consequence, *you*) uses `Server Components`,
+which will automatically implement server rendering without extra configuration.
+There are three distinct strategies to do server rendering.
+
+- **static rendering**, which is the default strategy.
+These routes are rendered at *build time*.
+It is cached and can inclusively be pushed to a CDN.
+This strategy is useful when a route has data that is static
+(not personalized to the user)
+and is already known at build time
+(e.g, a landing page).
+
+- **dynamic rendering**,
+where each route is rendered *at request time*.
+Unlike static rendering, 
+this is useful when a route has personalized data
+to the person.
+
+- **streaming**, 
+where the UI is progressively rendered from the server.
+The work needed to render is split into chunks
+and streamed to the client as it becomes ready.
+
+
+### Client components
+
+On the other hand, 
+`Client Components` allow you to write UI
+that is *already prerendered on the server*,
+which is then sent to the client,
+where the latter executes Javascript to run it in the browser.
+
+Because it's not default in `Next.js`,
+developers need to add the [`use client` directive](https://react.dev/reference/rsc/use-client)
+to mark the file as "part of the client bundle".
+
+Here's an implementation example.
+
+```ts
+'use client'
+ 
+import { useState } from 'react'
+ 
+export default function Counter() {
+  const [count, setCount] = useState(0)
+ 
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
 ```
-added 759 packages from 404 contributors and audited 759 packages in 20.486s
 
-78 packages are looking for funding
-  run `npm fund` for details
 
-found 5 vulnerabilities (3 low, 1 moderate, 1 high)
-  run `npm audit fix` to fix them, or `npm audit` for details
-```
+## Styling
 
-**1 high** priority vulnerability ... unsurprising in **759** packages from **404** contributors.
+`Next.js` adds supports for many styling techniques!
+
+- [`CSS` modules](https://en.wikipedia.org/wiki/CSS).
+- `Tailwind` CSS ([which we highly recommend](https://github.com/dwyl/learn-tailwind)!).
+- [`SASS`](https://sass-lang.com/).
+- [`CSS-in-JS`](https://cssinjs.org/?v=v10.10.1).
+
+Using a styling technique is a highly opinionated topic.
+You ought to know what *works best for you* 
+and use it in `Next.js`!
+
+
+## Optimizations
+
+`Next.js` comes with a myriad of optimizations out-of-the-box.
+It optimizes images, videos, fonts,
+minifies your bundle,
+allows you to boost your web app's SEO
+with simple configuration.
+
+The list is extensive. 
+Check it out at 
+https://nextjs.org/docs/app/building-your-application/optimizing.
+
+What *you* need to know is how you can leverage these optimizations.
+`Next.js` provides built-in components that do it for you,
+so you just got to use them!
+
+- `Image` components optimize images for performance by lazy loading
+and resizing images based on device size.
+- `Link` components will *prefetch pages in the background*,
+for faster navigation and performance.
+- `Script` components will give you control over loading 
+and executing third-party scripts.
+- and many more! 
+
+# How?
+
+Although we've created our own small application
+just to have a feeling over `Next.js`, 
+we'd be remiss if we didn't refer you
+to [`Next.js`'s demo tutorial](https://nextjs.org/learn).
+
+This resource comprehensively guides you to creating a dashboard
+and gives an overview over most of the features that `Next.js` 
+provides.
+
+Check it out!
