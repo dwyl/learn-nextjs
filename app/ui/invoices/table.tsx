@@ -2,10 +2,15 @@ import Image from 'next/image';
 import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
 import InvoiceStatus from '@/app/ui/invoices/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-import { fetchFilteredInvoices, fetchInvoicesPages, fetchPosts } from '@/app/lib/data';
+import {
+  fetchFilteredInvoices,
+  fetchInvoicesPages,
+  fetchPosts,
+} from '@/app/lib/data';
 import { Post } from '@/app/lib/definitions';
 import Pagination from './pagination';
 import { usePathname, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 export default async function InvoicesTable({
   allPosts,
@@ -16,8 +21,11 @@ export default async function InvoicesTable({
   query: string;
   currentPage: number;
 }) {
-
-  const {pagePosts, filteredPosts} = await fetchFilteredInvoices(allPosts, query, currentPage);
+  const { pagePosts, filteredPosts } = await fetchFilteredInvoices(
+    allPosts,
+    query,
+    currentPage,
+  );
   const totalPages = await fetchInvoicesPages(filteredPosts);
 
   return (
@@ -68,7 +76,9 @@ export default async function InvoicesTable({
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-3 py-3">
-                      {post.title}
+                      <Link key={post.id} href={`invoices/${post.id}`} passHref>
+                        {post.title}
+                      </Link>
                     </td>
                     <td className="whitespace-nowrap px-3 py-3">
                       {post.userId}

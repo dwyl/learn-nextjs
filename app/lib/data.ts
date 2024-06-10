@@ -61,6 +61,16 @@ export async function fetchRecentPosts() {
   return (await fetchPosts()).slice(0, 10);
 }
 
+export async function fetchPostWithId(id: string) {
+  const posts_res = await fetch(BASE_URL + 'posts/' + id, {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+
+  return (await posts_res.json()) as Post;
+}
+
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
   // This is equivalent to in fetch(..., {cache: 'no-store'}).

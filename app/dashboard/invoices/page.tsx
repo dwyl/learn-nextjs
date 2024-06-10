@@ -17,10 +17,9 @@ export default async function Page({
     page?: string;
   };
 }) {
-
   // I know it will get called on each re-render but we're just keeping it simple. This function caches the data so it's passable - https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#caching-data
   const allPosts = await fetchPosts();
-  
+
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
