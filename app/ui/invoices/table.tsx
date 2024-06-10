@@ -3,8 +3,8 @@ import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
 import InvoiceStatus from '@/app/ui/invoices/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import {
-  fetchFilteredInvoices,
-  fetchInvoicesPages,
+  fetchFilteredPosts,
+  fetchPostsPages,
   fetchPosts,
 } from '@/app/lib/data';
 import { Post } from '@/app/lib/definitions';
@@ -21,12 +21,12 @@ export default async function InvoicesTable({
   query: string;
   currentPage: number;
 }) {
-  const { pagePosts, filteredPosts } = await fetchFilteredInvoices(
+  const { pagePosts, filteredPosts } = await fetchFilteredPosts(
     allPosts,
     query,
     currentPage,
   );
-  const totalPages = await fetchInvoicesPages(filteredPosts);
+  const totalPages = await fetchPostsPages(filteredPosts);
 
   return (
     <>

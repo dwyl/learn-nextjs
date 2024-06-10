@@ -1,8 +1,4 @@
-import DwylLogo from '@/app/ui/dwyl-logo';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { lusitana } from '@/app/ui/fonts';
-import Image from 'next/image';
 
 export default function Page() {
   return (
@@ -27,7 +23,7 @@ export default function Page() {
                 A simple Next.js demo
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Following the learning module from
+                Following the learning module from 
                 <a href="https://nextjs.org/learn/" className="text-blue-500">
                   Next.js Learn Course
                 </a>
