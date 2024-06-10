@@ -669,7 +669,7 @@ and gives an overview over most of the features that `Next.js`
 provides.
 
 Our version of the dashboard 
-differs to the original onde from `Next.js`'s documentation.
+differs to the original one from `Next.js`'s documentation.
 The latter needs you to create an account in `Vercel` 
 and a database to fetch data.
 In our version, we use two external APIs:
