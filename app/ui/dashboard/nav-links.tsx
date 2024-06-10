@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  UserGroupIcon,
   ChartBarSquareIcon,
   ChatBubbleBottomCenterTextIcon,
 } from '@heroicons/react/24/outline';

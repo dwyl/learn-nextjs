@@ -1,7 +1,4 @@
-import {
-  Post,
-  Photo,
-} from './definitions';
+import { Post, Photo } from './definitions';
 import randomString from 'randomstring';
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com/';
@@ -16,7 +13,7 @@ export async function fetchPhotos() {
   const photos_res = await fetch(BASE_URL + 'photos', {
     headers: {
       'Content-Type': 'application/json',
-    }
+    },
   });
 
   // Map over the response from API and using `picsum.photos` to change the URL
@@ -40,7 +37,6 @@ export async function fetchPhotos() {
  * @returns 4 JSON photo objects.
  */
 export async function fetchRecentPhotos() {
-
   // Artificially delay a response for demo purposes.
   // Don't do this in production :)
   console.log('Fetching photos data...');
@@ -57,7 +53,7 @@ export async function fetchPosts() {
   const posts_res = await fetch(BASE_URL + 'posts', {
     headers: {
       'Content-Type': 'application/json',
-    }
+    },
   });
 
   return (await posts_res.json()) as Post[];
@@ -80,7 +76,7 @@ export async function fetchPostWithId(id: string) {
   const posts_res = await fetch(BASE_URL + 'posts/' + id, {
     headers: {
       'Content-Type': 'application/json',
-    }
+    },
   });
 
   return (await posts_res.json()) as Post;
@@ -98,7 +94,6 @@ export async function fetchFilteredPosts(
   query: string,
   currentPage: number,
 ) {
-
   // Returns the page in a given array.
   function paginate(array: Post[], page_size: number, page_number: number) {
     return array.slice((page_number - 1) * page_size, page_number * page_size);
@@ -106,18 +101,23 @@ export async function fetchFilteredPosts(
 
   // Filters the posts where properties have the search query
   function filterThePosts(posts: Post[], query: string) {
-    return posts.filter(element => {
+    return posts.filter((element) => {
       for (let key in element) {
-          if (element[key].toString().toLowerCase().includes(query.toLowerCase())) {
-              return true;
-          }
+        if (
+          element[key].toString().toLowerCase().includes(query.toLowerCase())
+        ) {
+          return true;
+        }
       }
       return false;
-  })
+    });
   }
 
   const data = paginate(posts, ITEMS_PER_PAGE, currentPage);
-  return {pagePosts: filterThePosts(data, query), filteredPosts: filterThePosts(posts, query)}
+  return {
+    pagePosts: filterThePosts(data, query),
+    filteredPosts: filterThePosts(posts, query),
+  };
 }
 
 /**
@@ -126,6 +126,6 @@ export async function fetchFilteredPosts(
  * @returns the number of pages.
  */
 export async function fetchPostsPages(filteredPosts: Post[]) {
-    const totalPages = Math.ceil(Number(filteredPosts.length) / ITEMS_PER_PAGE);
-    return totalPages;
+  const totalPages = Math.ceil(Number(filteredPosts.length) / ITEMS_PER_PAGE);
+  return totalPages;
 }

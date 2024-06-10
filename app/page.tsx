@@ -23,7 +23,7 @@ export default function Page() {
                 A simple Next.js demo
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Following the learning module from 
+                Following the learning module from
                 <a href="https://nextjs.org/learn/" className="text-blue-500">
                   Next.js Learn Course
                 </a>

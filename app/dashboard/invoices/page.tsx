@@ -2,10 +2,9 @@ import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';
 import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
-import { Suspense, useEffect, useState } from 'react';
-import React, { useMemo } from 'react';
+import { Suspense } from 'react';
+import React from 'react';
 import { fetchPosts } from '@/app/lib/data';
-import { Post } from '@/app/lib/definitions';
 
 export default async function Page({
   searchParams,
