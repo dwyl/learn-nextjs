@@ -2,6 +2,8 @@ import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { Revenue } from '@/app/lib/definitions';
+import { fetchRecentPhotos } from '@/app/lib/data';
+import Image from 'next/image';
 
 // This component is representational only.
 // For data visualization UI, check out:
@@ -9,57 +11,45 @@ import { Revenue } from '@/app/lib/definitions';
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
 
-export default async function RevenueChart({
-  revenue,
-}: {
-  revenue: Revenue[];
-}) {
-  const chartHeight = 350;
-  // NOTE: comment in this code when you get to this point in the course
-
-  // const { yAxisLabels, topLabel } = generateYAxis(revenue);
-
-  // if (!revenue || revenue.length === 0) {
-  //   return <p className="mt-4 text-gray-400">No data available.</p>;
-  // }
+export default async function RevenueChart() {
+  const latestPhotos = await fetchRecentPhotos();
 
   return (
     <div className="w-full md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-        Recent Revenue
+        Recent Photos
       </h2>
-      {/* NOTE: comment in this code when you get to this point in the course */}
 
-      {/* <div className="rounded-xl bg-gray-50 p-4">
-        <div className="sm:grid-cols-13 mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 md:gap-4">
-          <div
-            className="mb-6 hidden flex-col justify-between text-sm text-gray-400 sm:flex"
-            style={{ height: `${chartHeight}px` }}
-          >
-            {yAxisLabels.map((label) => (
-              <p key={label}>{label}</p>
-            ))}
-          </div>
-
-          {revenue.map((month) => (
-            <div key={month.month} className="flex flex-col items-center gap-2">
-              <div
-                className="w-full rounded-md bg-blue-300"
-                style={{
-                  height: `${(chartHeight / topLabel) * month.revenue}px`,
-                }}
-              ></div>
-              <p className="-rotate-90 text-sm text-gray-400 sm:rotate-0">
-                {month.month}
-              </p>
-            </div>
+      <div className="rounded-xl bg-gray-50 p-4">
+        <ul
+          role="list"
+          className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-2 xl:gap-x-8"
+        >
+          {latestPhotos.map((photo) => (
+            <li key={photo.id} className="relative">
+              <div className="aspect-h-7 aspect-w-10 group block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                <Image
+                  src={photo.thumbnailUrl}
+                  width={700}
+                  height={500}
+                  alt={photo.title}
+                  className="pointer-events-none object-cover group-hover:opacity-75"
+                />
+              </div>
+              <div className="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">
+                {photo.title}
+              </div>
+              <div className="pointer-events-none block text-sm font-medium text-gray-500">
+                from album {photo.albumId}
+              </div>
+            </li>
           ))}
-        </div>
-        <div className="flex items-center pb-2 pt-6">
-          <CalendarIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Last 12 months</h3>
-        </div>
-      </div> */}
+        </ul>
+      </div>
+      <div className="flex items-center pb-2 pt-6">
+        <CalendarIcon className="h-5 w-5 text-gray-500" />
+        <h3 className="ml-2 text-sm text-gray-500 ">Last 12 months</h3>
+      </div>
     </div>
   );
 }

@@ -7,8 +7,62 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
+  Post,
+  Photo
 } from './definitions';
 import { formatCurrency } from './utils';
+import randomString from 'randomstring';
+
+const BASE_URL = "https://jsonplaceholder.typicode.com/";
+
+export async function fetchPhotos() {
+  const photos_res = await fetch(BASE_URL + 'photos', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store',
+  });
+
+  const photos: Photo[] = await photos_res.json();
+  let mappedPhotos = photos.map((photo) => {
+    const seed = randomString.generate({
+      length: 10,
+      charset: 'alphabetic',
+    })
+
+    photo.thumbnailUrl = `https://picsum.photos/seed/${seed}/300`
+    photo.url = `https://picsum.photos/seed/${seed}`
+    return photo
+  });
+
+  return mappedPhotos
+}
+
+
+export async function fetchRecentPhotos() {
+  //Artificially delay a response for demo purposes.
+  //Don't do this in production :)
+  console.log('Fetching photos data...');
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  return (await fetchPhotos()).slice(0, 4)
+}
+
+export async function fetchPosts() {
+
+  const posts_res = await fetch(BASE_URL + 'posts', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store',
+  });
+
+  return await posts_res.json() as Post[]
+}
+
+export async function fetchRecentPosts() {
+  return (await fetchPosts()).slice(0, 10)
+}
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.

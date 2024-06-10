@@ -32,6 +32,10 @@ export function CardsSkeleton() {
 export function RevenueChartSkeleton() {
   return (
     <div className={`${shimmer} relative w-full overflow-hidden md:col-span-4`}>
+      <span className="w-full text-center text-sm font-medium text-gray-500">
+        This is supposed to take longer to show dynamic rendering.<br></br>
+        It has a timeout hardcoded.
+      </span>
       <div className="mb-4 h-8 w-36 rounded-md bg-gray-100" />
       <div className="rounded-xl bg-gray-100 p-4">
         <div className="mt-0 grid h-[410px] grid-cols-12 items-end gap-2 rounded-md bg-white p-4 sm:grid-cols-13 md:gap-4" />
