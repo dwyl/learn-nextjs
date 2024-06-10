@@ -9,7 +9,8 @@ import Image from 'next/image';
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
 
-export default async function RevenueChart() {
+export default async function LatestPhotos() {
+  
   const latestPhotos = await fetchRecentPhotos();
 
   return (

@@ -2,7 +2,8 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchRecentPosts } from '@/app/lib/data';
 
-export default async function LatestInvoices() {
+export default async function LatestPosts() {
+
   const latestPosts = await fetchRecentPosts();
 
   return (

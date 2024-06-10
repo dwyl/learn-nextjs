@@ -6,7 +6,7 @@ import { Post } from '@/app/lib/definitions';
 import Pagination from './pagination';
 import Link from 'next/link';
 
-export default async function InvoicesTable({
+export default async function PostsTable({
   allPosts,
   query,
   currentPage,
@@ -70,7 +70,7 @@ export default async function InvoicesTable({
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-3 py-3">
-                      <Link key={post.id} href={`invoices/${post.id}`} passHref>
+                      <Link key={post.id} href={`posts/${post.id}`} passHref>
                         {post.title}
                       </Link>
                     </td>
