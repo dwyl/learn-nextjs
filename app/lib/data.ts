@@ -8,19 +8,18 @@ import {
   User,
   Revenue,
   Post,
-  Photo
+  Photo,
 } from './definitions';
 import { formatCurrency } from './utils';
 import randomString from 'randomstring';
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/";
+const BASE_URL = 'https://jsonplaceholder.typicode.com/';
 
 export async function fetchPhotos() {
   const photos_res = await fetch(BASE_URL + 'photos', {
     headers: {
       'Content-Type': 'application/json',
-    },
-    cache: 'no-store',
+    }
   });
 
   const photos: Photo[] = await photos_res.json();
@@ -28,16 +27,15 @@ export async function fetchPhotos() {
     const seed = randomString.generate({
       length: 10,
       charset: 'alphabetic',
-    })
+    });
 
-    photo.thumbnailUrl = `https://picsum.photos/seed/${seed}/300`
-    photo.url = `https://picsum.photos/seed/${seed}`
-    return photo
+    photo.thumbnailUrl = `https://picsum.photos/seed/${seed}/300`;
+    photo.url = `https://picsum.photos/seed/${seed}`;
+    return photo;
   });
 
-  return mappedPhotos
+  return mappedPhotos;
 }
-
 
 export async function fetchRecentPhotos() {
   //Artificially delay a response for demo purposes.
@@ -45,23 +43,22 @@ export async function fetchRecentPhotos() {
   console.log('Fetching photos data...');
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  return (await fetchPhotos()).slice(0, 4)
+  return (await fetchPhotos()).slice(0, 4);
 }
 
 export async function fetchPosts() {
-
+  console.log('Fetching posts data...');
   const posts_res = await fetch(BASE_URL + 'posts', {
     headers: {
       'Content-Type': 'application/json',
-    },
-    cache: 'no-store',
+    }
   });
 
-  return await posts_res.json() as Post[]
+  return (await posts_res.json()) as Post[];
 }
 
 export async function fetchRecentPosts() {
-  return (await fetchPosts()).slice(0, 10)
+  return (await fetchPosts()).slice(0, 10);
 }
 
 export async function fetchRevenue() {
@@ -143,59 +140,35 @@ export async function fetchCardData() {
 
 const ITEMS_PER_PAGE = 6;
 export async function fetchFilteredInvoices(
+  posts: Post[],
   query: string,
   currentPage: number,
 ) {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-
-  try {
-    const invoices = await sql<InvoicesTable>`
-      SELECT
-        invoices.id,
-        invoices.amount,
-        invoices.date,
-        invoices.status,
-        customers.name,
-        customers.email,
-        customers.image_url
-      FROM invoices
-      JOIN customers ON invoices.customer_id = customers.id
-      WHERE
-        customers.name ILIKE ${`%${query}%`} OR
-        customers.email ILIKE ${`%${query}%`} OR
-        invoices.amount::text ILIKE ${`%${query}%`} OR
-        invoices.date::text ILIKE ${`%${query}%`} OR
-        invoices.status ILIKE ${`%${query}%`}
-      ORDER BY invoices.date DESC
-      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
-    `;
-
-    return invoices.rows;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch invoices.');
+  // Paginates the array
+  function paginate(array: Post[], page_size: number, page_number: number) {
+    // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
   }
+
+  // Filters the posts where properties have the search query
+  function filterThePosts(posts: Post[], query: string) {
+    return posts.filter(element => {
+      for (let key in element) {
+          if (element[key].toString().toLowerCase().includes(query.toLowerCase())) {
+              return true;
+          }
+      }
+      return false;
+  })
+  }
+
+  const data = paginate(posts, ITEMS_PER_PAGE, currentPage);
+  return {pagePosts: filterThePosts(data, query), filteredPosts: filterThePosts(posts, query)}
 }
 
-export async function fetchInvoicesPages(query: string) {
-  try {
-    const count = await sql`SELECT COUNT(*)
-    FROM invoices
-    JOIN customers ON invoices.customer_id = customers.id
-    WHERE
-      customers.name ILIKE ${`%${query}%`} OR
-      customers.email ILIKE ${`%${query}%`} OR
-      invoices.amount::text ILIKE ${`%${query}%`} OR
-      invoices.date::text ILIKE ${`%${query}%`} OR
-      invoices.status ILIKE ${`%${query}%`}
-  `;
-
-    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+export async function fetchInvoicesPages(filteredPosts: Post[]) {
+    const totalPages = Math.ceil(Number(filteredPosts.length) / ITEMS_PER_PAGE);
     return totalPages;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch total number of invoices.');
-  }
 }
 
 export async function fetchInvoiceById(id: string) {

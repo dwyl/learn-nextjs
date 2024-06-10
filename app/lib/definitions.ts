@@ -10,6 +10,7 @@ export type User = {
 };
 
 export type Post = {
+  [key: string]: any;
   userId: number;
   id: number;
   title: string;
