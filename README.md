@@ -6,11 +6,18 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/learn-nextjs/issues)
 
 Dive into **`Next.js`**,
-the _de facto_ React framework to build scalable,
-high-performance web applications server-side rendering,
-static site generation, and much more.
+the _de facto_ `React` web framework <br />
+to build scalable apps
+with server-side rendering,
+static site generation
+and much more.
 
 </div>
+
+<!--
+Note: the Table of Contents is auto-generated/updated by Markdown All-in-One 
+https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
+-->
 
 - [Learn Next.js](#learn-nextjs)
 - [Why?](#why)
@@ -33,11 +40,14 @@ static site generation, and much more.
 
 # Why?
 
-Ever since it's inception,
-there's been a _lot_ of hype around `Next.js`
-and, as years went on,
-it's [increasingly gained popularity amongst developers](https://survey.stackoverflow.co/2023/#section-admired-and-desired-web-frameworks-and-technologies)
-and [it's even vouched by the official `React` team](https://www.kodaps.dev/en/blog/why-react-prefers-nextjs)!
+
+
+Since its' inception,
+there's been a _lot_ of hype around `Next.js`.
+It has gained 
+[popularity amongst developers](https://survey.stackoverflow.co/2023/#section-admired-and-desired-web-frameworks-and-technologies)
+and even the 
+[`React` team recommends using it](https://www.kodaps.dev/en/blog/why-react-prefers-nextjs)!
 
 Founded by [Guillermo Rauch](https://vercel.com/about/rauchg),
 creator of _many_ popular Node.js modules including `socket.io` and `mongoose`,
