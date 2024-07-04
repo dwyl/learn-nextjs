@@ -9,11 +9,11 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/learn-nextjs/issues)
 
 Dive into **`Next.js`**,
-the _de facto_ `React` web framework
-to build scalable web apps <br />
-with server-side rendering,
+the _de facto_ `React` web framework <br />
+to build scalable web apps 
+with server-side rendering, <br />
 static site generation
-and much more.
+and much more!
 
 </div>
 
@@ -62,10 +62,10 @@ One may ask how `Next.js` differs
 
 In simple words, `Next.js` simplifies
 your development process and
-it **automatically** optimizes your web application to be published,
+it **_automatically_ optimizes** your web app for deployment,
 so you only have to _focus on the development of core features_,
 instead of meddling with configuration files to package
-and bundle your web app.
+and bundle your app.
 
 That seems like a blanket statement, right?
 It's because it is!
@@ -81,7 +81,8 @@ It does this through its primary features.
 A primary distinction is **rendering**,
 as it's handled differently between `React` and `Next.js`.
 You may already know that `React` renders the user interface on the client side,
-while `Next.js` performs **server-side rendering**.
+while `Next.js` performs 
+[**server-side rendering**](https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering).
 However, `Next.js` offers flexibility in rendering options.
 You can _choose_ to render the UI on the client side or the server side
 much easier in `Next.js` than the default `React` way.
@@ -133,9 +134,9 @@ When you develop in `Next.js`,
 you just let it take care of processes like
 linting, formatting, compiling,
 bundling, minifying, etc..
-Having automating _most_ of the remaining processes
-and letting us focus on building the _essential_ business logic of the application
-is **a time-saver**.
+This lets us **focus** on building 
+the **_essential_ business logic** of the app
+which is a **_huge_ time-saver**.
 
 And the best part is that,
 at the end,

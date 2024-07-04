@@ -53,9 +53,6 @@ export default async function PostsTable({
                   <th scope="col" className="px-3 py-5 font-medium">
                     Title
                   </th>
-                  <th scope="col" className="px-3 py-5 font-medium">
-                    User ID
-                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white">
@@ -73,9 +70,6 @@ export default async function PostsTable({
                       <Link key={post.id} href={`posts/${post.id}`} passHref>
                         {post.title}
                       </Link>
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-3">
-                      {post.userId}
                     </td>
                   </tr>
                 ))}

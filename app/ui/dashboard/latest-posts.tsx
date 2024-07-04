@@ -2,9 +2,22 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchRecentPosts } from '@/app/lib/data';
 
+
 export default async function LatestPosts() {
 
   const latestPosts = await fetchRecentPosts();
+  const postUrl = (id: number) => {
+    return `/dashboard/posts/${id}`
+  }
+  const ids = [17494745,  4185328, 194400, 13881801, 1271181, 
+    6190813, 12719553, 13434452, 3187525, 251937, 1150553
+  ];
+  const avatarUrl = (id: number) => {
+    return "https://avatars.githubusercontent.com/u/" + ids[id-1] + "?s=50";
+  }
+  const profileUrl = (id: number) => {
+    return "https://api.github.com/user/" + ids[id-1]
+  }
 
   return (
     <div className="flex w-full flex-col md:col-span-4">
@@ -24,26 +37,22 @@ export default async function LatestPosts() {
                   className="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
                 >
                   <div className="flex min-w-0 gap-x-4">
+                    <div className="hidden sm:flex sm:flex-col">
+                      <a className="text-sm leading-6 text-gray-900" 
+                        href={profileUrl(post.id)}>
+                        <img className="inline-block h-6 w-6 rounded-full" 
+                          src={avatarUrl(post.id)} />
+                      </a>
+                    </div>
                     <div className="min-w-0 flex-auto">
-                      <div className="text-sm font-semibold leading-6 text-gray-900">
-                        <div>
-                          <span className="absolute inset-x-0 -top-px bottom-0"></span>
-                          {post.id}
-                        </div>
-                      </div>
                       <div className="mt-1 flex text-xs leading-5 text-gray-500">
-                        <span className="relative truncate hover:underline">
+                        <a className="relative truncate hover:underline" href={postUrl(post.id)}>
                           {post.title}
-                        </span>
+                        </a>
                       </div>
                     </div>
                   </div>
-                  <div className="flex shrink-0 items-center gap-x-4">
-                    <div className="hidden sm:flex sm:flex-col sm:items-end">
-                      <p className="text-sm leading-6 text-gray-900">
-                        from user {post.userId}
-                      </p>
-                    </div>
+                  <a className="flex shrink-0 items-center gap-x-4" href={postUrl(post.id)}>
                     <svg
                       className="h-5 w-5 flex-none text-gray-400"
                       viewBox="0 0 20 20"
@@ -56,13 +65,13 @@ export default async function LatestPosts() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </div>
+                  </a>
                 </li>
               );
             })}
           </ul>
         }
-        <div className="flex items-center pb-2 pt-6">
+        <div className="flex items-center pb-2 pt-6" >
           <ArrowPathIcon className="h-5 w-5 text-gray-500" />
           <h3 className="ml-2 text-sm text-gray-500 ">Updated just now</h3>
         </div>
