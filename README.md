@@ -1,13 +1,13 @@
 <div align="center">
 
-# Learn Next.js
+# Learn `Next.js`
 
 [![HitCount](https://hits.dwyl.com/dwyl/learn-nextjs.svg?style=flat-square)](https://hits.dwyl.com/dwyl/learn-nextjs)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/learn-nextjs/issues)
 
 Dive into **`Next.js`**,
-the _de facto_ `React` web framework <br />
-to build scalable apps
+the _de facto_ `React` web framework
+to build scalable web apps <br />
 with server-side rendering,
 static site generation
 and much more.
@@ -19,7 +19,7 @@ Note: the Table of Contents is auto-generated/updated by Markdown All-in-One
 https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
 -->
 
-- [Learn Next.js](#learn-nextjs)
+- [Learn `Next.js`](#learn-nextjs)
 - [Why?](#why)
   - [What are the benefits of `Next.js`?](#what-are-the-benefits-of-nextjs)
     - [Ok, so what's the takeaway?](#ok-so-whats-the-takeaway)
@@ -41,18 +41,17 @@ https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
 # Why?
 
 
-
 Since its' inception,
-there's been a _lot_ of hype around `Next.js`.
+there has been a _lot_ of hype around `Next.js`. <br >
 It has gained 
-[popularity amongst developers](https://survey.stackoverflow.co/2023/#section-admired-and-desired-web-frameworks-and-technologies)
+[critical mass amongst developers](https://survey.stackoverflow.co/2023/#section-admired-and-desired-web-frameworks-and-technologies)
 and even the 
-[`React` team recommends using it](https://www.kodaps.dev/en/blog/why-react-prefers-nextjs)!
+[`React` team recommends using `Next.js`](https://www.kodaps.dev/en/blog/why-react-prefers-nextjs)!
 
-Founded by [Guillermo Rauch](https://vercel.com/about/rauchg),
-creator of _many_ popular Node.js modules including `socket.io` and `mongoose`,
-knowing how to develop with `Next.js` will put you in a great position
-[in relation to job prospects](https://www.itjobswatch.co.uk/jobs/uk/next.js.do)
+Founded by [Guillermo Rauch](https://www.linkedin.com/in/rauchg),
+creator of _many_ popular `Node` modules including `socket.io` and `mongoose`,
+knowing how to develop with `Next.js` will put you in a great position for
+[job prospects](https://www.itjobswatch.co.uk/jobs/uk/next.js.do)
 and it's a valuable skill to learn if you're already seasoned with `React`.
 
 One may ask how `Next.js` differs
