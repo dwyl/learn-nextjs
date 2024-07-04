@@ -2,6 +2,9 @@
 
 # Learn `Next.js`
 
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dwyl/learn-nextjs/ci.yml?label=build&style=flat-square&branch=main)](https://github.com/dwyl/learn-nextjs/actions/workflows/ci.yml)
+[![codecov.io](https://img.shields.io/codecov/c/github/dwyl/learn-nextjs/main.svg?style=flat-square)](https://codecov.io/github/dwyl/learn-nextjs?branch=main)
+[![TypeScript Version](http://img.shields.io/badge/TypeScript-v5-brightgreen.svg?style=flat-square "Latest Typescript")](https://www.typescriptlang.org/download/)
 [![HitCount](https://hits.dwyl.com/dwyl/learn-nextjs.svg?style=flat-square)](https://hits.dwyl.com/dwyl/learn-nextjs)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/learn-nextjs/issues)
 
