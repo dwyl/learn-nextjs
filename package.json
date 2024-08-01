@@ -20,7 +20,7 @@
     "bcrypt": "^5.1.1",
     "clsx": "^2.0.0",
     "next": "^14.0.2",
-    "postcss": "8.4.31",
+    "postcss": "8.4.40",
     "randomstring": "^1.3.0",
     "react": "18.3.1",
     "react-dom": "18.2.0",
