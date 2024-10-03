@@ -8,11 +8,7 @@ export const metadata: Metadata = {
     'A small demo to learn how to use Next.js with two external APIs.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({children,}: {children: React.ReactNode;}) {
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>{children}</body>

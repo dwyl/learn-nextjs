@@ -1,18 +1,28 @@
 <div align="center">
 
-# Learn Next.js
+# Learn `Next.js`
 
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dwyl/learn-nextjs/ci.yml?label=build&style=flat-square&branch=main)](https://github.com/dwyl/learn-nextjs/actions/workflows/ci.yml)
+[![codecov.io](https://img.shields.io/codecov/c/github/dwyl/learn-nextjs/main.svg?style=flat-square)](https://codecov.io/github/dwyl/learn-nextjs?branch=main)
+[![TypeScript Version](http://img.shields.io/badge/TypeScript-v5-brightgreen.svg?style=flat-square "Latest Typescript")](https://www.typescriptlang.org/download/)
 [![HitCount](https://hits.dwyl.com/dwyl/learn-nextjs.svg?style=flat-square)](https://hits.dwyl.com/dwyl/learn-nextjs)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/learn-nextjs/issues)
 
 Dive into **`Next.js`**,
-the _de facto_ React framework to build scalable,
-high-performance web applications server-side rendering,
-static site generation, and much more.
+the _de facto_ `React` web framework <br />
+to build scalable web apps 
+with server-side rendering, <br />
+static site generation
+and much more!
 
 </div>
 
-- [Learn Next.js](#learn-nextjs)
+<!--
+Note: the Table of Contents is auto-generated/updated by Markdown All-in-One 
+https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
+-->
+
+- [Learn `Next.js`](#learn-nextjs)
 - [Why?](#why)
   - [What are the benefits of `Next.js`?](#what-are-the-benefits-of-nextjs)
     - [Ok, so what's the takeaway?](#ok-so-whats-the-takeaway)
@@ -33,16 +43,18 @@ static site generation, and much more.
 
 # Why?
 
-Ever since it's inception,
-there's been a _lot_ of hype around `Next.js`
-and, as years went on,
-it's [increasingly gained popularity amongst developers](https://survey.stackoverflow.co/2023/#section-admired-and-desired-web-frameworks-and-technologies)
-and [it's even vouched by the official `React` team](https://www.kodaps.dev/en/blog/why-react-prefers-nextjs)!
 
-Founded by [Guillermo Rauch](https://vercel.com/about/rauchg),
-creator of _many_ popular Node.js modules including `socket.io` and `mongoose`,
-knowing how to develop with `Next.js` will put you in a great position
-[in relation to job prospects](https://www.itjobswatch.co.uk/jobs/uk/next.js.do)
+Since its' inception,
+there has been a _lot_ of hype around `Next.js`. <br >
+It has gained 
+[critical mass amongst developers](https://survey.stackoverflow.co/2023/#section-admired-and-desired-web-frameworks-and-technologies)
+and even the 
+[`React` team recommends using `Next.js`](https://www.kodaps.dev/en/blog/why-react-prefers-nextjs)!
+
+Founded by [Guillermo Rauch](https://www.linkedin.com/in/rauchg),
+creator of _many_ popular `Node` modules including `socket.io` and `mongoose`,
+knowing how to develop with `Next.js` will put you in a great position for
+[job prospects](https://www.itjobswatch.co.uk/jobs/uk/next.js.do)
 and it's a valuable skill to learn if you're already seasoned with `React`.
 
 One may ask how `Next.js` differs
@@ -50,10 +62,10 @@ One may ask how `Next.js` differs
 
 In simple words, `Next.js` simplifies
 your development process and
-it **automatically** optimizes your web application to be published,
+it **_automatically_ optimizes** your web app for deployment,
 so you only have to _focus on the development of core features_,
 instead of meddling with configuration files to package
-and bundle your web app.
+and bundle your app.
 
 That seems like a blanket statement, right?
 It's because it is!
@@ -69,7 +81,8 @@ It does this through its primary features.
 A primary distinction is **rendering**,
 as it's handled differently between `React` and `Next.js`.
 You may already know that `React` renders the user interface on the client side,
-while `Next.js` performs **server-side rendering**.
+while `Next.js` performs 
+[**server-side rendering**](https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering).
 However, `Next.js` offers flexibility in rendering options.
 You can _choose_ to render the UI on the client side or the server side
 much easier in `Next.js` than the default `React` way.
@@ -121,9 +134,9 @@ When you develop in `Next.js`,
 you just let it take care of processes like
 linting, formatting, compiling,
 bundling, minifying, etc..
-Having automating _most_ of the remaining processes
-and letting us focus on building the _essential_ business logic of the application
-is **a time-saver**.
+This lets us **focus** on building 
+the **_essential_ business logic** of the app
+which is a **_huge_ time-saver**.
 
 And the best part is that,
 at the end,
