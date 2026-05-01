@@ -27,7 +27,7 @@
     "tailwindcss": "4.2.4",
     "typescript": "5.9.3",
     "use-debounce": "^10.1.0",
-    "zod": "^4.3.6"
+    "zod": "^4.4.2"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
