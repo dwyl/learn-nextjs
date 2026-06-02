@@ -40,7 +40,7 @@
     "@vercel/style-guide": "^6.0.0",
     "dotenv": "^17.4.2",
     "eslint": "^8.57.0",
-    "eslint-config-next": "15.5.4",
+    "eslint-config-next": "16.2.7",
     "eslint-config-prettier": "10.1.8",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
